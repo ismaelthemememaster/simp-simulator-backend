@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using simp_simulator_models;
 
 namespace simp_simulator_backend.Controllers
 {

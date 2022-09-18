@@ -1,4 +1,4 @@
-namespace simp_simulator_backend
+namespace simp_simulator_models
 {
     public class WeatherForecast
     {

@@ -398,3 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Defined by user
+/simp-simulator-backend/Properties/
+launchSetting.json
