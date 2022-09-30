@@ -1,6 +1,13 @@
+using simp_simulator_backend.Services;
+using simp_simulator_models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<SimpSimulatorDatabaseSettings>(
+    builder.Configuration.GetSection("SimpDatabase"));
+
+builder.Services.AddSingleton<SimpsService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
