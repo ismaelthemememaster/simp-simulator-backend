@@ -1,6 +1,6 @@
-﻿using simp_simulator_models;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using simp_simulator_models;
 using simp_simulator_models.BsonMappers;
 
 namespace simp_simulator_backend.Services;
