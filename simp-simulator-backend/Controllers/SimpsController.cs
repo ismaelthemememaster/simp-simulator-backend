@@ -12,9 +12,13 @@ namespace simp_simulator_backend.Controllers;
 public class SimpsController : ControllerBase
 {
     private readonly SimpsService _simpsService;
+    private readonly JobsService _jobsService;
 
-    public SimpsController(SimpsService simpsService) =>
+    public SimpsController(SimpsService simpsService, JobsService jobsService)
+    {
         _simpsService = simpsService;
+        _jobsService = jobsService;
+    }
 
     /// <summary>
     /// Get all simps.
@@ -64,6 +68,13 @@ public class SimpsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post(Simp newSimp)
     {
+        var job = await _jobsService.GetAsync(newSimp.Job);
+
+        if (job is null)
+        {
+            return NotFound();  // TODO: Return an error JobNotFound or something telling the user to send a valid job
+        }
+
         await _simpsService.CreateAsync(newSimp);
 
         return CreatedAtAction(nameof(Get), new { id = newSimp.Id }, newSimp);
@@ -73,7 +84,7 @@ public class SimpsController : ControllerBase
     /// Update a simp.
     /// </summary>
     /// <remarks>
-    /// For now this is the only way of banning a simp, maybe in the future implement an endpoint to ban them automatically if they send 1 dollar
+    /// For now this is the only way of banning a simp, maybe in the future implement a PATCH to ban them when they send 1 dollar
     /// The e-girl only gets a fraction of that, you know?. Stop being poor.
     /// </remarks>
     /// <response code="200">If the simp sent was successfully updated</response>
