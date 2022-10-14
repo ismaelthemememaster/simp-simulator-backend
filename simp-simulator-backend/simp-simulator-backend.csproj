@@ -7,6 +7,7 @@
     <RootNamespace>simp_simulator_backend</RootNamespace>
     <UserSecretsId>b5c60193-5989-42ca-9ff0-ce9d5b2f89ea</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
