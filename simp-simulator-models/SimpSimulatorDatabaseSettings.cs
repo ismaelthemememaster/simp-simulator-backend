@@ -7,4 +7,6 @@ public class SimpSimulatorDatabaseSettings
     public string DatabaseName { get; set; } = null!;
 
     public string SimpsCollectionName { get; set; } = null!;
+
+    public string JobsCollectionName { get; set; } = null!;
 }

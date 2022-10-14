@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace simp_simulator_models.BsonMappers;
 
-public class Simp
+public class Job
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
@@ -12,9 +12,7 @@ public class Simp
     //[BsonElement("Name")]
     public string Name { get; set; } = null!;
 
-    public DateTime BirthDate { get; set; }
+    public int Pay { get; set; } = 0;
 
-    public string IsBanned { get; set; } = "Not yet";
-
-    public string Job { get; set; } = "Probably a NEET";
+    public string SocialStatus { get; set; } = "Less than Negative";
 }

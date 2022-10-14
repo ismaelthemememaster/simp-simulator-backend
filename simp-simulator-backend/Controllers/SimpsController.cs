@@ -1,5 +1,4 @@
-﻿using simp_simulator_models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using simp_simulator_backend.Services;
 using simp_simulator_models.BsonMappers;
 

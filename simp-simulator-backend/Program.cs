@@ -8,6 +8,7 @@ builder.Services.Configure<SimpSimulatorDatabaseSettings>(
     builder.Configuration.GetSection("SimpDatabase"));
 
 builder.Services.AddSingleton<SimpsService>();
+builder.Services.AddSingleton<JobsService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
