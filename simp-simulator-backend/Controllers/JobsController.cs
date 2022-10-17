@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using simp_simulator_backend.Services;
+using simp_simulator_models;
 using simp_simulator_models.BsonMappers;
 
 namespace simp_simulator_backend.Controllers;
@@ -61,11 +62,11 @@ public class JobsController : ControllerBase
     /// <response code="201">If the Job was created successfully</response>
     /// <response code="400">If this program breaks, which (since I programmed it) is very likely</response>
     [HttpPost]
-    public async Task<IActionResult> Post(Job newJob)
+    public async Task<IActionResult> Post(JobPayload newJob)
     {
-        await _jobsService.CreateAsync(newJob);
+        var newId = await _jobsService.CreateAsync(newJob);
 
-        return CreatedAtAction(nameof(Get), new { id = newJob.Id }, newJob);
+        return CreatedAtAction(nameof(Post), new { id = newId }, newJob);
     }
 
     /// <summary>

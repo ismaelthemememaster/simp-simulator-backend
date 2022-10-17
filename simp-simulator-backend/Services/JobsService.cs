@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using simp_simulator_models;
 using simp_simulator_models.BsonMappers;
@@ -28,8 +29,16 @@ public class JobsService
     public async Task<Job?> GetAsync(string id) =>
         await _jobsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-    public async Task CreateAsync(Job newJob) =>
+    public async Task<string> CreateAsync(JobPayload payload)
+    {
+        Job newJob = new Job();
+        newJob.Id = ObjectId.GenerateNewId().ToString();
+        newJob.Name = payload.Name;
+        newJob.Pay = payload.Pay;
+        newJob.SocialStatus = payload.SocialStatus;
         await _jobsCollection.InsertOneAsync(newJob);
+        return newJob.Id;
+    }
 
     public async Task UpdateAsync(string id, Job updatedJob) =>
         await _jobsCollection.ReplaceOneAsync(x => x.Id == id, updatedJob);
